@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppHafta5.MainPage">
+
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem Text="Ekle"   IconImageSource="add.png"   Clicked="BtnAddClicked"/>
+        <ToolbarItem Text="Paylaş" IconImageSource="share.png" Clicked="BtnShareClicked" />
+        <ToolbarItem Text="Kaydet" IconImageSource="save.png"  Clicked="BtnSaveClicked" />
+
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <CollectionView x:Name="listKisiler" SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItem Text="Resim Ekle"
+                                       IconImageSource="camera.png"
+                                       />
+                        </SwipeView.LeftItems>
+
+                        <SwipeView.RightItems>
+                            <SwipeItem Text="Düzenle"
+                                       IconImageSource="edit.png"
+                                       />
+                            <SwipeItem Text="Sil"
+                                       IconImageSource="trash.png"
+                                       />
+                        </SwipeView.RightItems>
+
+
+                        <Border BackgroundColor="Transparent">
+
+                            <Grid RowDefinitions="2*,1*,1*,0.5*"
+                          ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+
+                                <Image Source="{Binding Image}" WidthRequest="75" Grid.RowSpan="4"/>
+
+                                <Label Text="{Binding FullName}" TextColor="Red" Grid.Row="0" Grid.Column="1" FontSize="20" />
+                                <Label Text="{Binding Phone}"    TextColor="Green" Grid.Row="1" Grid.Column="1" FontSize="15" />
+                                <Label Text="{Binding Email}"    TextColor="Blue" Grid.Row="2" Grid.Column="1" FontSize="12"/>
+                                <Label Text="{Binding ID}"       Grid.Row="3" Grid.Column="1" FontSize="8"/>
+
+                            </Grid>
+
+                            <FlyoutBase.ContextFlyout>
+                                <MenuFlyout>
+                                    <MenuFlyoutItem Text="Düzenle" CommandParameter="{Binding ID}" 
+                                                    Clicked="BtnEditClicked"/>
+                                    <MenuFlyoutItem Text="Sil" CommandParameter="{Binding ID}" 
+                                                    Clicked="BtnDeleteClicked"/>
+
+                                    <MenuFlyoutItem Text="Resim Ekle" CommandParameter="{Binding ID}" 
+                                                    Clicked="BtnAddImageClicked"/>
+                                </MenuFlyout>
+                            </FlyoutBase.ContextFlyout>
+                        </Border>
+
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ScrollView>
+
+</ContentPage>

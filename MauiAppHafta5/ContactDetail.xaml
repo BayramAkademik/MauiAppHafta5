@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="MauiAppHafta5.ContactDetail"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://schemas.microsoft.com/dotnet/2021/maui/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:MauiAppHafta5"
+    mc:Ignorable="d"
+    Padding="10">
+
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="VerticalOptions" Value="Center"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <VerticalStackLayout>
+
+            <Grid ColumnDefinitions="Auto,*" 
+              RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+              RowSpacing="10"
+              ColumnSpacing="10"
+              Margin="10">
+
+
+                <Label Grid.Row="0" Grid.Column="0"
+                   Text="ID"/>
+
+                <Label Grid.Row="1" Grid.Column="0"
+                   Text="Adı"/>
+
+                <Label Grid.Row="2" Grid.Column="0"
+                   Text="Soyadı"/>
+
+                <Label Grid.Row="3" Grid.Column="0"
+                   Text="Telefon"/>
+
+                <Label Grid.Row="4" Grid.Column="0"
+                   Text="Mail"/>
+
+                <Entry x:Name="txtID"  IsReadOnly="True" Text="{Binding ID}"                    
+                        Grid.Column="1" Grid.Row="0"/>
+
+                <Entry x:Name="txtAd"  Placeholder="Ad"   Text="{Binding Name}"
+                        Grid.Column="1" Grid.Row="1"/>
+                
+                <Entry x:Name="txtSoyad" Placeholder="Soyad"  Text="{Binding Surname}"
+                        Grid.Column="1" Grid.Row="2"/>
+                <Entry x:Name="txtTel"   Placeholder="Telefon" Keyboard="Telephone"  Text="{Binding Phone}"
+                        Grid.Column="1" Grid.Row="3"/>
+
+                <Entry x:Name="txtMail"  Placeholder="Mail" Keyboard="Email"  Text="{Binding Email}"
+                        Grid.Column="1" Grid.Row="4"/>
+
+            </Grid>
+            <HorizontalStackLayout HorizontalOptions="End" Margin="20" Spacing="10">
+                <Button Style="{d:StaticResource OkButtonStyle}" Clicked="OkClicked"/>
+                <Button Style="{d:StaticResource CancelButtonStyle}" Clicked="CancelClicked"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>
